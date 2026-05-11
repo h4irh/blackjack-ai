@@ -11,15 +11,7 @@ app = FastAPI(title="Blackjack AI")
 # Load model
 
 
-MODEL_PATH = "model/blackjack_ai_model.pkl"
-
-if not os.path.exists(MODEL_PATH):
-    print("Downloading model...")
-    url = "https://your-direct-download-link-here"   # Get direct link from Google Drive
-    r = requests.get(url)
-    with open(MODEL_PATH, 'wb') as f:
-        f.write(r.content)
-
+MODEL_PATH = "model/blackjack_ai_model_compressed.pkl"
 model = joblib.load(MODEL_PATH)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
