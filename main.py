@@ -4,11 +4,23 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import joblib
 import pandas as pd
+import requests, joblib, os
 
 app = FastAPI(title="Blackjack AI")
 
 # Load model
-model = joblib.load("model/blackjack_ai_model.pkl")
+
+
+MODEL_PATH = "model/blackjack_ai_model.pkl"
+
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model...")
+    url = "https://your-direct-download-link-here"   # Get direct link from Google Drive
+    r = requests.get(url)
+    with open(MODEL_PATH, 'wb') as f:
+        f.write(r.content)
+
+model = joblib.load(MODEL_PATH)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
