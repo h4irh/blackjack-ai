@@ -1,0 +1,56 @@
+/* static/style.css */
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+input[type="number"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Neon glow effects */
+button {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
+}
+
+button:hover {
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.6);
+  transform: translateY(-2px);
+}
+
+#result {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card-like inputs */
+input, select {
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2);
+  border-color: rgb(74 222 128);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(74 222 128);
+  border-radius: 20px;
+}
